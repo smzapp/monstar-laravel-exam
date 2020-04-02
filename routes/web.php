@@ -11,7 +11,7 @@
 |
 */
 
-Route::prefix('employee')->group(function() {
+Route::group(['prefix' => 'employee', 'as' => 'employee.', 'middleware' => 'auth'] ,function() {
 	Route::get('/', 'EmployeeController@index')->name('employee.list');
 	Route::post('/', 'EmployeeController@store')->name('employee.store');
 	Route::get('/create', 'EmployeeController@create')->name('employee.create');
@@ -19,7 +19,7 @@ Route::prefix('employee')->group(function() {
 });
 
 
-Route::group(['prefix' => 'company', 'as' => 'company.'] ,function() {
+Route::group(['prefix' => 'company', 'as' => 'company.', 'middleware' => 'auth'] ,function() {
 	Route::get('/', 'CompanyController@index')->name('list');
 	Route::post('/', 'CompanyController@store')->name('store');
 	Route::get('/create', 'CompanyController@create')->name('create');
