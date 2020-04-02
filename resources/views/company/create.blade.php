@@ -9,7 +9,7 @@
 			</div>
 		@endif
 		<h3>Create Company</h3><hr>
-		<form action="{{ url('company')}}" method="POST">
+		<form action="{{ route('company.store')}}" method="POST">
 			@csrf
 			<label for="name">Name</label>
 			<input type="text" name="name" id="name" class="form-control"><br>

@@ -19,12 +19,14 @@ Route::prefix('employee')->group(function() {
 });
 
 
-Route::prefix('company')->group(function() {
-	Route::get('/', 'CompanyController@index')->name('company.list');
-	Route::post('/', 'CompanyController@store')->name('company.store');
-	Route::get('/create', 'CompanyController@create')->name('company.create');
-	Route::get('/edit/{id}', 'CompanyController@edit')->name('company.edit');
-	Route::delete('/{id}', 'CompanyController@destroy')->name('company.destroy');
+Route::group(['prefix' => 'company', 'as' => 'company.'] ,function() {
+	Route::get('/', 'CompanyController@index')->name('list');
+	Route::post('/', 'CompanyController@store')->name('store');
+	Route::get('/create', 'CompanyController@create')->name('create');
+	Route::get('/edit/{id}', 'CompanyController@edit')->name('edit');
+	Route::post('/edit/{id}', 'CompanyController@update')->name('update');
+	Route::delete('/{id}', 'CompanyController@destroy')->name('destroy');
+	Route::get('/detail/{id}', 'CompanyController@show')->name('show');
 });
 
 Route::get('/', function () {

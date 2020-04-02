@@ -8,11 +8,13 @@
 			    {{ implode('', $errors->all(':message')) }}
 			</div>
 		@endif
-		<h3>Create Company</h3><hr>
-		<form method="post" action="{{action('CompanyController@update', $id)}}">
+		<h3>Edit Company</h3><hr>
+		<form method="post" action="{{ route('company.update', $comp->id)}}">
 			@csrf
+			<label for="name">Company ID: 	</label>
+			<b>{{ $comp->id }}</b><br>
 			<label for="name">Name</label>
-			<input type="text" name="name" id="name" class="form-control"><br>
+			<input type="text" name="name" id="name" class="form-control" placeholder="{{ $comp->name }}"><br>
 			<label for="address">Address</label>
 			<input type="text" name="address" id="address" class="form-control"><br>
 			<label for="website">Website</label>
